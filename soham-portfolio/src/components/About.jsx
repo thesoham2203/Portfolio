@@ -2,19 +2,39 @@ import React from 'react'
 import data from '../data/content.json'
 
 const SKILL_GROUPS = {
-  'AI/ML': {
-    skills: ['PyTorch', 'TensorFlow', 'NLP', 'ML Ops'],
+  'Privacy Engineering': {
+    skills: ['spaCy NLP', 'OpenCV', 'AES-256', 'GDPR Compliance', 'Zero-Trust'],
     icon: (
       <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <circle cx="12" cy="12" r="3"/>
-        <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"/>
-        <circle cx="12" cy="12" r="10"/>
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <path d="M9 12l2 2 4-4"/>
       </svg>
     ),
     color: 'from-cyan-400 to-blue-500'
   },
-  Backend: {
-    skills: ['Go', 'Python', 'gRPC', 'Kubernetes'],
+  'Computer Vision': {
+    skills: ['PyTorch', 'OpenCV', 'EasyOCR', 'MediaPipe', 'Real-time Processing'],
+    icon: (
+      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M20.188 10.934c.388.472.601 1.068.601 1.66 0 .592-.213 1.188-.601 1.66C18.77 15.98 15.636 18 12 18c-3.636 0-6.77-2.02-8.188-3.746-.388-.472-.601-1.068-.601-1.66 0-.592.213-1.188.601-1.66C5.23 8.02 8.364 6 12 6c3.636 0 6.77 2.02 8.188 3.746z"/>
+      </svg>
+    ),
+    color: 'from-violet-500 to-purple-600'
+  },
+  'Security': {
+    skills: ['FF3-1 Encryption','PPI Extraction', 'Tokenization', 'Audit Trails','Log Handling'],
+    icon: (
+      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <rect x="2" y="4" width="20" height="16" rx="2"/>
+        <path d="M7 15h0M2 10h20"/>
+        <circle cx="17" cy="15" r="1"/>
+      </svg>
+    ),
+    color: 'from-emerald-400 to-teal-500'
+  },
+  'Backend & Infrastructure': {
+    skills: ['FastAPI', 'SupaBase', 'Redis', 'Docker', 'Kubernetes'],
     icon: (
       <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
@@ -22,31 +42,13 @@ const SKILL_GROUPS = {
         <line x1="12" y1="17" x2="12" y2="21"/>
       </svg>
     ),
-    color: 'from-violet-500 to-purple-600'
-  },
-  Security: {
-    skills: ['E2EE', 'Tokenization', 'Threat Modelling'],
-    icon: (
-      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-        <circle cx="12" cy="16" r="1"/>
-        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-      </svg>
-    ),
-    color: 'from-emerald-400 to-teal-500'
-  },
-  Tools: {
-    skills: ['Docker', 'Postgres', 'Git', 'Linux'],
-    icon: (
-      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-      </svg>
-    ),
     color: 'from-pink-400 to-rose-500'
   }
 }
 
 export default function About(){
+  const { bio, skills, achievements } = data
+  
   return (
     <section id="about" className="py-16">
       <div className="mb-8">
@@ -54,8 +56,7 @@ export default function About(){
           About Me
         </h2>
         <p className="text-slate-300 text-lg leading-relaxed max-w-3xl">
-          Final-year BTech in AI & Data Science with a passion for building secure, privacy-preserving systems. 
-          I specialize in developing ML tools for regulated industries and implementing robust security frameworks.
+          {bio}
         </p>
       </div>
 
@@ -65,16 +66,28 @@ export default function About(){
           <div className="flex items-center gap-3 mb-4">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-violet-500 flex items-center justify-center">
               <svg className="w-5 h-5 text-slate-900" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clipRule="evenodd"/>
+                <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
               </svg>
             </div>
-            <h3 className="text-xl font-semibold text-slate-100">Background & Roles</h3>
+            <h3 className="text-xl font-semibold text-slate-100">Background & Focus</h3>
           </div>
-          <div className="space-y-3 text-slate-300">
-            <p>🏛️ Ex-Treasurer CSI (2024–25) - Led financial planning for 12+ technical events</p>
-            <p>🔬 Active research in E2EE and privacy frameworks for secure messaging systems</p>
-            <p>🏦 Multiple fintech security projects with compliance focus (RBI, banking regulations)</p>
-            <p>🎯 Specialized in AI-driven tools for legacy data processing in government & banking sectors</p>
+          <div className="space-y-3 text-slate-300 text-sm">
+            <div className="flex items-start gap-2">
+              <span className="text-cyan-400 text-lg">🎓</span>
+              <p>AI & Data Science student at K.K. Wagh Institute, specializing in privacy-preserving ML systems and cybersecurity</p>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="text-violet-400 text-lg">🔒</span>
+              <p>Active researcher in E2EE protocols, zero-knowledge proofs, and privacy-preserving authentication mechanisms</p>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="text-emerald-400 text-lg">🏦</span>
+              <p>Fintech security consultant focusing on RBI DPDP Act 2023 compliance and secure tokenization systems</p>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="text-pink-400 text-lg">👥</span>
+              <p>Former CSI Treasurer managing ₹5L+ budgets and leading cybersecurity workshops for 200+ students</p>
+            </div>
           </div>
         </div>
 
@@ -108,23 +121,41 @@ export default function About(){
         </div>
       </div>
 
+      {/* Achievements Section */}
+      {achievements && (
+        <div className="mt-12">
+          <h3 className="text-xl font-semibold text-slate-100 mb-6">Key Achievements</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {achievements.map((achievement, idx) => (
+              <div key={idx} className="card-glass p-4 rounded-lg hover:bg-slate-800/20 transition-all duration-300 text-center group">
+                <div className="text-2xl mb-2">{achievement.icon}</div>
+                <h4 className="font-semibold text-slate-200 group-hover:text-cyan-300 transition-colors mb-2">
+                  {achievement.title}
+                </h4>
+                <p className="text-xs text-slate-400">{achievement.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Stats Section */}
       <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
-        <div className="text-center card-glass p-4 rounded-lg">
-          <div className="text-2xl font-bold text-cyan-400">3+</div>
-          <div className="text-sm text-slate-400">Major Projects</div>
+        <div className="text-center card-glass p-4 rounded-lg hover:bg-slate-800/20 transition-all duration-300 group">
+          <div className="text-2xl font-bold text-cyan-400 group-hover:scale-110 transition-transform">5+</div>
+          <div className="text-sm text-slate-400">Production Projects</div>
         </div>
-        <div className="text-center card-glass p-4 rounded-lg">
-          <div className="text-2xl font-bold text-violet-400">2+</div>
-          <div className="text-sm text-slate-400">Years Research</div>
+        <div className="text-center card-glass p-4 rounded-lg hover:bg-slate-800/20 transition-all duration-300 group">
+          <div className="text-2xl font-bold text-violet-400 group-hover:scale-110 transition-transform">95%+</div>
+          <div className="text-sm text-slate-400">ML Accuracy</div>
         </div>
-        <div className="text-center card-glass p-4 rounded-lg">
-          <div className="text-2xl font-bold text-pink-400">12+</div>
-          <div className="text-sm text-slate-400">Events Led</div>
+        <div className="text-center card-glass p-4 rounded-lg hover:bg-slate-800/20 transition-all duration-300 group">
+          <div className="text-2xl font-bold text-emerald-400 group-hover:scale-110 transition-transform">₹5L+</div>
+          <div className="text-sm text-slate-400">Budget Managed</div>
         </div>
-        <div className="text-center card-glass p-4 rounded-lg">
-          <div className="text-2xl font-bold text-emerald-400">∞</div>
-          <div className="text-sm text-slate-400">Learning</div>
+        <div className="text-center card-glass p-4 rounded-lg hover:bg-slate-800/20 transition-all duration-300 group">
+          <div className="text-2xl font-bold text-pink-400 group-hover:scale-110 transition-transform">200+</div>
+          <div className="text-sm text-slate-400">Students Mentored</div>
         </div>
       </div>
     </section>

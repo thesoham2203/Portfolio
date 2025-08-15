@@ -60,25 +60,6 @@ export default function Experience(){
           <ExperienceCard key={index} experience={exp} index={index} />
         ))}
       </div>
-
-      {/* Timeline Visual */}
-      <div className="mt-12 relative">
-        <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-400 via-violet-500 to-pink-400 opacity-30"></div>
-        <div className="space-y-8 pl-12">
-          <div className="flex items-center gap-4">
-            <div className="w-3 h-3 rounded-full bg-cyan-400 -ml-16 relative z-10"></div>
-            <div className="text-sm text-slate-400">Started AI & Security Research</div>
-          </div>
-          <div className="flex items-center gap-4">
-            <div className="w-3 h-3 rounded-full bg-violet-500 -ml-16 relative z-10"></div>
-            <div className="text-sm text-slate-400">Leadership Role in CSI</div>
-          </div>
-          <div className="flex items-center gap-4">
-            <div className="w-3 h-3 rounded-full bg-pink-400 -ml-16 relative z-10"></div>
-            <div className="text-sm text-slate-400">Fintech Consulting Projects</div>
-          </div>
-        </div>
-      </div>
     </section>
   )
 }

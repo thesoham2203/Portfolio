@@ -34,8 +34,8 @@ export default function Footer(){
             <h4 className="font-semibold text-slate-200 mb-4">Tech Focus</h4>
             <div className="flex flex-wrap gap-2">
               <span className="text-xs px-2 py-1 rounded bg-cyan-400/20 text-cyan-300 border border-cyan-400/30">AI/ML</span>
-              <span className="text-xs px-2 py-1 rounded bg-violet-400/20 text-violet-300 border border-violet-400/30">Security</span>
-              <span className="text-xs px-2 py-1 rounded bg-pink-400/20 text-pink-300 border border-pink-400/30">Fintech</span>
+              <span className="text-xs px-2 py-1 rounded bg-violet-400/20 text-violet-300 border border-violet-400/30">Cyber Security</span>
+              <span className="text-xs px-2 py-1 rounded bg-pink-400/20 text-pink-300 border border-pink-400/30">Innovation</span>
               <span className="text-xs px-2 py-1 rounded bg-emerald-400/20 text-emerald-300 border border-emerald-400/30">Privacy</span>
             </div>
           </div>

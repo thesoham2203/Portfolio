@@ -1,63 +1,190 @@
 {
   "name": "Soham Penshanwar",
-  "tagline": "AI systems, secure by design — building privacy-first fintech & tooling.",
+  "tagline": "Building privacy-first AI systems & secure fintech infrastructure — where machine learning meets data sovereignty.",
   "email": "sohampilot0@gmail.com",
+  "bio": "Final-year AI & Data Science student with a passion for privacy-preserving systems, cybersecurity, and production-grade ML solutions. I specialize in building secure, scalable applications that protect user data while delivering intelligent insights.",
+  "skills": {
+    "languages": ["Python", "Go", "TypeScript", "JavaScript", "C++"],
+    "frameworks": ["FastAPI", "React", "PyTorch", "TensorFlow", "OpenCV"],
+    "security": ["AES-256", "SHA-256", "OAuth", "JWT", "Zero-Trust Architecture"],
+    "cloud": ["Docker", "Kubernetes", "AWS", "Redis", "PostgreSQL", "MongoDB"],
+    "specializations": ["Computer Vision", "NLP", "Privacy Engineering", "Fintech Compliance"]
+  },
   "projects": [
     {
-      "id": "archivemind",
-      "title": "ArchiveMind",
-      "domain": "AI/ML",
-      "description": "AI-powered legacy data extraction and processing tool designed for ministries and banks to modernize archival systems with intelligent document processing.",
-      "stack": ["Python", "PyTorch", "NLP", "Kubernetes", "FastAPI"],
-      "image": "/src/assets/archivemind.svg",
-      "github": "https://github.com/thesoham2203/ArchiveMind"
+      "id": "redact",
+      "title": "REDACT — Privacy Shield",
+      "domain": "Privacy Engineering",
+      "description": "Production-ready Chrome Extension (Manifest V3) for intelligent document redaction. Features AI-powered PII detection, multi-format support (PDF, DOCX, images), and context-aware synthetic data generation. Built with FastAPI backend, spaCy NLP, OpenCV, and comprehensive audit logging for GDPR compliance.",
+      "stack": ["Python", "FastAPI", "spaCy", "OpenCV", "Chrome APIs", "Tesseract OCR", "dlib"],
+      "image": "/src/assets/redact.svg",
+      "github": "https://github.com/thesoham2203/REDACT-Extension",
+      "highlights": [
+        "Smart AI redaction with 95%+ accuracy for PII detection",
+        "Multi-format processing: PDF, Word, Excel, PowerPoint, CSV, Images",
+        "Face detection & blurring using dlib 68-point landmarks",
+        "Configurable redaction levels (25%, 50%, 75%, 100%)",
+        "GDPR-compliant audit logging and consent management",
+        "Zero-persistence architecture with automatic file cleanup"
+      ],
+      "features": ["Chrome Extension MV3", "FastAPI Backend", "AI/ML Processing", "Privacy Compliance"]
+    },
+    {
+      "id": "anpr",
+      "title": "ANPR Toll Collection System",
+      "domain": "Computer Vision",
+      "description": "Enterprise-grade Automatic Number Plate Recognition system for toll collection with React 19 frontend, FastAPI backend, and real-time video processing. Features multi-algorithm plate detection, confidence scoring, automated payment processing, and hardware integration for barrier control.",
+      "stack": ["Python", "FastAPI", "OpenCV", "EasyOCR", "React", "TypeScript", "FFmpeg", "Node.js"],
+      "image": "/src/assets/anpr.svg",
+      "github": "https://github.com/thesoham2203/Automatic-Number-Plate-Detection",
+      "highlights": [
+        "Multi-algorithm detection: Haar Cascades + Contour Analysis",
+        "Real-time video processing with FFmpeg optimization",
+        "Dynamic toll pricing with vehicle type classification",
+        "Automated payment processing & account management",
+        "Hardware integration: camera, sensors, barrier control",
+        "Production-ready with health monitoring & logging"
+      ],
+      "features": ["Computer Vision", "Real-time Processing", "Hardware Integration", "Payment System"]
     },
     {
       "id": "policyvault",
       "title": "PolicyVault Nexus",
-      "domain": "Fintech/Security",
-      "description": "RBI-compliant secure data gateway for fintech with zero-persistence architecture, advanced tokenization, and real-time policy enforcement.",
-      "stack": ["Go", "gRPC", "Tokenization", "PostgreSQL", "Redis"],
+      "domain": "Fintech Security",
+      "description": "RBI-compliant data sharing platform for fintech applications. Implements FF3-1 format-preserving encryption, zero-persistence APIs, real-time consent enforcement, and secure tokenization. Built with FastAPI and Quarkus for high-performance financial data processing.",
+      "stack": ["Python", "FastAPI", "Quarkus", "PostgreSQL", "Redis", "FF3-1 Encryption", "gRPC"],
       "image": "/src/assets/policyvault.svg",
-      "github": "https://github.com/thesoham2203/PolicyVault-Nexus"
+      "github": "https://github.com/thesoham2203/PolicyVault-Nexus",
+      "highlights": [
+        "RBI DPDP Act 2023 compliance framework",
+        "FF3-1 format-preserving encryption for sensitive data",
+        "Zero-persistence architecture with in-memory processing",
+        "Real-time consent management and policy enforcement",
+        "High-performance APIs with sub-100ms response times",
+        "Comprehensive audit trails for regulatory compliance"
+      ],
+      "features": ["Fintech Compliance", "Data Encryption", "Zero-Trust Security", "High Performance"]
     },
     {
-      "id": "redact",
-      "title": "RE-DACT",
-      "domain": "Privacy/Tools",
-      "description": "Chrome extension for automated sensitive data redaction in documents and images using advanced OCR and ML-based pattern recognition.",
-      "stack": ["TypeScript", "Chromium APIs", "OCR", "TensorFlow.js", "WebAssembly"],
-      "image": "/src/assets/redact.svg",
-      "github": "https://github.com/thesoham2203/RE-DACT"
+      "id": "crowdcounting",
+      "title": "Crowd Counting using CSRNet",
+      "domain": "Computer Vision",
+      "description": "Deep learning solution for crowd density estimation using CSRNet (Congested Scene Recognition Network). Implements dilated convolutions for multi-scale feature extraction and generates accurate density maps for crowd analysis in complex scenes.",
+      "stack": ["Python", "PyTorch", "OpenCV", "NumPy", "Matplotlib", "CUDA"],
+      "image": "/src/assets/crowdcounting.svg",
+      "github": "https://github.com/thesoham2203/Crowd-Counting-using-CSRNet",
+      "highlights": [
+        "CSRNet implementation with dilated convolutions",
+        "Multi-scale feature extraction for dense crowds",
+        "Trained on ShanghaiTech dataset with data augmentation",
+        "Real-time density map generation",
+        "Optimized for GPU acceleration with CUDA support",
+        "Achieves competitive MAE/MSE scores on benchmark datasets"
+      ],
+      "features": ["Deep Learning", "Computer Vision", "Density Estimation", "Real-time Processing"]
+    },
+    {
+      "id": "isl",
+      "title": "Indian Sign Language Recognition",
+      "domain": "Accessibility AI",
+      "description": "Computer vision-based Indian Sign Language recognition system that converts hand gestures into text and speech. Uses MediaPipe for hand landmark detection and custom CNN models for gesture classification, making digital communication more accessible.",
+      "stack": ["Python", "TensorFlow", "MediaPipe", "OpenCV", "scikit-learn", "pyttsx3"],
+      "image": "/src/assets/isl.svg",
+      "github": "https://github.com/thesoham2203/Indian-Sign-Language-Recognition",
+      "highlights": [
+        "Real-time hand gesture recognition using MediaPipe",
+        "Custom CNN architecture for ISL alphabet classification",
+        "Text-to-speech conversion for accessibility",
+        "Real-time video processing with 30+ FPS performance",
+        "Support for 26 ISL alphabets with 90%+ accuracy",
+        "Inclusive design for hearing-impaired community"
+      ],
+      "features": ["Accessibility", "Real-time CV", "Text-to-Speech", "Inclusive Design"]
     }
   ],
   "experience": [
     {
-      "role": "Ex-Treasurer, Computer Society of India (CSI)",
+      "role": "Treasurer, Computer Society of India (CSI)",
+      "company": "K.K. Wagh Institute of Engineering",
       "period": "2024–25",
       "highlights": [
         "Managed budgets exceeding ₹5L+ for 12+ technical events and workshops",
-        "Led cybersecurity workshops and capture-the-flag competitions",
-        "Coordinated with industry partners for sponsorships and technical sessions"
-      ]
+        "Led  in organising workshops and  competitions",
+        "Coordinated with industry partners for sponsorships and technical sessions",
+        "Organized AI/ML workshops for 200+ students with hands-on projects"
+      ],
+      "skills": ["Leadership", "Budget Management", "Event Organization", "Cybersecurity"]
     },
     {
-      "role": "Research — E2EE & Privacy Frameworks",
-      "period": "2023–Present",
-      "highlights": [
-        "Published internal research on optimized key exchange protocols",
-        "Developed prototype implementations for secure messaging systems",
-        "Focus on privacy-preserving authentication mechanisms"
-      ]
-    },
-    {
-      "role": "Fintech Security Consultant",
+      "role": "Marketing and Outreach Head",
+      "company": "FOSS KKWIEER",
       "period": "2024–Present",
       "highlights": [
-        "Designed compliance frameworks for RBI regulations",
-        "Implemented zero-trust architecture for financial data processing",
-        "Security audits and threat modeling for payment gateways"
+        "Marketed Free and Open Source Software",
+        "Developed prototype implementations for FOSS",
+        "Increased Awareness for FOSS",
+        "Contributing to open-source privacy tools and libraries"
+      ],
+      "skills": ["Cryptography", "Privacy Engineering", "Research", "Design"]
+    },
+    {
+      "role": "Intern",
+      "company": "Calibers Infotech- Onsite",
+      "period": "Jul 2022 - Sep 2022",
+      "highlights": [
+        "Built Backends in Php"
+      ],
+      "skills": ["Backend Development", "Integration", "SEO"]
+    }
+  ],
+  "education": [
+    {
+      "degree": "B.Tech in Artificial Intelligence & Data Science",
+      "institution": "K.K. Wagh Institute of Engineering Education & Research",
+      "period": "2023 - 2026",
+      "achievements": [
+        "Relevant Coursework: Machine Learning, Deep Learning, Computer Vision, NLP, Cybersecurity",
+        "Active in technical societies and open-source contributions",
+        "Led multiple projects in AI, privacy engineering, and fintech security"
+      ]
+    },
+    {
+      "degree": "Diploma in Computer Engineering",
+      "institution": "GURU GOBIND SINGH POLYTECHNIC",
+      "period": "2020–2023",
+      "achievements": [
+        "Relevant Coursework: Machine Learning, Deep Learning, Computer Vision, NLP, Cybersecurity",
+        "Active in technical societies and open-source contributions",
+        "Led multiple projects in AI, privacy engineering, and fintech security"
       ]
     }
-  ]
+  ],
+  "achievements": [
+    {
+      "title": "Open Source Contributions",
+      "description": "Active contributor to privacy-focused and AI/ML open source projects",
+      "icon": "🌟"
+    },
+    {
+      "title": "CTF Competitions",
+      "description": "Participated in cybersecurity capture-the-flag competitions and workshops",
+      "icon": "🏆"
+    },
+    {
+      "title": "Technical Leadership",
+      "description": "Led technical teams and managed large-scale student events",
+      "icon": "👥"
+    },
+    {
+      "title": "Smart India Hackathon Finalist",
+      "description": "In Top 5 Teams from all over India",
+      "icon": "🚀"
+    }
+  ],
+  "contact": {
+    "email": "sohampilot0@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/soham-penshanwar/",
+    "github": "https://github.com/thesoham2203",
+    "location": "Mumbai, India"
+  }
 }
