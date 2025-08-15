@@ -5,6 +5,7 @@ export default function Hero(){
   const { name, tagline, bio } = data
   const [currentExpertise, setCurrentExpertise] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
+  const [reduceMotion, setReduceMotion] = useState(false)
   
   const expertiseAreas = [
     'Privacy Engineer & AI Developer',
@@ -22,6 +23,20 @@ export default function Hero(){
     return () => clearInterval(interval)
   }, [])
 
+  useEffect(() => {
+    // respect user preference for reduced motion
+    const mql = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)')
+    const handle = () => setReduceMotion(Boolean(mql && mql.matches))
+    handle()
+    if (mql && mql.addEventListener) {
+      mql.addEventListener('change', handle)
+      return () => mql.removeEventListener('change', handle)
+    } else if (mql && mql.addListener) {
+      mql.addListener(handle)
+      return () => mql.removeListener(handle)
+    }
+  }, [])
+
   return (
     <section id="hero" className="pt-20 pb-24 relative overflow-hidden">
       {/* Animated background particles */}
@@ -33,11 +48,16 @@ export default function Hero(){
 
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div className={`space-y-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          {/* Dynamic expertise indicator */}
+          {/* Dynamic expertise indicator (announces changes politely for screen readers) */}
           <div className="flex items-center gap-3 overflow-hidden">
             <div className="relative h-6 overflow-hidden">
-              <div className="absolute inset-0 transition-transform duration-500 ease-in-out" 
-                   style={{transform: `translateY(-${currentExpertise * 100}%)`}}>
+              <div
+                className={`absolute inset-0 transition-transform duration-500 ease-in-out ${reduceMotion ? '' : ''}`}
+                style={{transform: `translateY(-${currentExpertise * 100}%)`}}
+                role="status"
+                aria-live="polite"
+                aria-atomic="true"
+              >
                 {expertiseAreas.map((area, index) => (
                   <p key={index} className="text-cyan-300 text-sm uppercase tracking-widest font-medium h-6 flex items-center">
                     {area}
@@ -105,21 +125,33 @@ export default function Hero(){
             </a>
           </div>
 
-          {/* Quick stats row */}
-          <div className={`flex items-center gap-8 pt-4 transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-cyan-400">5+</div>
-              <div className="text-xs text-slate-400">Projects</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-violet-400">95%+</div>
-              <div className="text-xs text-slate-400">ML Accuracy</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-emerald-400">₹5L+</div>
-              <div className="text-xs text-slate-400">Budget Led</div>
-            </div>
-          </div>
+          {/* Quick stats row (data-driven, accessible) */}
+          {/** Create a small data structure so it's easy to update or reuse elsewhere **/}
+          {
+            (() => {
+              const stats = [
+                { value: '5+', label: 'Projects', color: 'text-cyan-400' },
+                { value: '95%+', label: 'ML Accuracy', color: 'text-violet-400' },
+                { value: '₹5L+', label: 'Budget Led', color: 'text-emerald-400' }
+              ]
+
+              const statsMotionClass = reduceMotion ? '' : 'transition-all duration-1000 delay-1000'
+
+              return (
+                <dl className={`flex items-center gap-8 pt-4 ${statsMotionClass} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} aria-label="Quick statistics">
+                  {stats.map((s, i) => (
+                    <div key={i} className="text-center">
+                      <dt className="sr-only">{s.label}</dt>
+                      <dd>
+                        <div className={`text-2xl font-bold ${s.color}`} aria-hidden="true">{s.value}</div>
+                        <div className="text-xs text-slate-400">{s.label}</div>
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              )
+            })()
+          }
         </div>
 
         {/* Enhanced featured project card */}
