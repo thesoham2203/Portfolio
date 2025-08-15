@@ -17,7 +17,7 @@
       "domain": "Privacy Engineering",
       "description": "Production-ready Chrome Extension (Manifest V3) for intelligent document redaction. Features AI-powered PII detection, multi-format support (PDF, DOCX, images), and context-aware synthetic data generation. Built with FastAPI backend, spaCy NLP, OpenCV, and comprehensive audit logging for GDPR compliance.",
       "stack": ["Python", "FastAPI", "spaCy", "OpenCV", "Chrome APIs", "Tesseract OCR", "dlib"],
-      "image": "./src/assets/redact.svg",
+      "image": "/src/assets/redact.svg",
       "github": "https://github.com/thesoham2203/REDACT-Extension",
       "highlights": [
         "Smart AI redaction with 95%+ accuracy for PII detection",
@@ -35,7 +35,7 @@
       "domain": "Computer Vision",
       "description": "Enterprise-grade Automatic Number Plate Recognition system for toll collection with React 19 frontend, FastAPI backend, and real-time video processing. Features multi-algorithm plate detection, confidence scoring, automated payment processing, and hardware integration for barrier control.",
       "stack": ["Python", "FastAPI", "OpenCV", "EasyOCR", "React", "TypeScript", "FFmpeg", "Node.js"],
-      "image": "./src/assets/anpr.svg",
+      "image": "/src/assets/anpr.svg",
       "github": "https://github.com/thesoham2203/Automatic-Number-Plate-Detection",
       "highlights": [
         "Multi-algorithm detection: Haar Cascades + Contour Analysis",
@@ -53,7 +53,7 @@
       "domain": "Fintech Security",
       "description": "RBI-compliant data sharing platform for fintech applications. Implements FF3-1 format-preserving encryption, zero-persistence APIs, real-time consent enforcement, and secure tokenization. Built with FastAPI and Quarkus for high-performance financial data processing.",
       "stack": ["Python", "FastAPI", "Quarkus", "PostgreSQL", "Redis", "FF3-1 Encryption", "gRPC"],
-      "image": "./src/assets/policyvault.svg",
+      "image": "/src/assets/policyvault.svg",
       "github": "https://github.com/thesoham2203/PolicyVault-Nexus",
       "highlights": [
         "RBI DPDP Act 2023 compliance framework",
@@ -71,7 +71,7 @@
       "domain": "Computer Vision",
       "description": "Deep learning solution for crowd density estimation using CSRNet (Congested Scene Recognition Network). Implements dilated convolutions for multi-scale feature extraction and generates accurate density maps for crowd analysis in complex scenes.",
       "stack": ["Python", "PyTorch", "OpenCV", "NumPy", "Matplotlib", "CUDA"],
-      "image": "./src/assets/crowdcounting.svg",
+      "image": "/src/assets/crowdcounting.svg",
       "github": "https://github.com/thesoham2203/Crowd-Counting-using-CSRNet",
       "highlights": [
         "CSRNet implementation with dilated convolutions",
@@ -89,7 +89,7 @@
       "domain": "Accessibility AI",
       "description": "Computer vision-based Indian Sign Language recognition system that converts hand gestures into text and speech. Uses MediaPipe for hand landmark detection and custom CNN models for gesture classification, making digital communication more accessible.",
       "stack": ["Python", "TensorFlow", "MediaPipe", "OpenCV", "scikit-learn", "pyttsx3"],
-      "image": "./src/assets/isl.svg",
+      "image": "/src/assets/isl.svg",
       "github": "https://github.com/thesoham2203/Indian-Sign-Language-Recognition",
       "highlights": [
         "Real-time hand gesture recognition using MediaPipe",

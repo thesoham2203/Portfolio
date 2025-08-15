@@ -2,6 +2,19 @@
 
 A futuristic, minimalist portfolio website built with React, Tailwind CSS, and modern web technologies. Designed to showcase AI, security, and fintech expertise with unique visual elements and smooth animations.
 
+## 🚀 Quick Deployment Fix
+
+If you're experiencing a 404 error on Vercel, the issue has been resolved with:
+
+1. **vercel.json** - Added proper SPA routing configuration
+2. **vite.config.js** - Updated with correct build settings
+3. **Asset paths** - Fixed for production deployment
+
+### Redeploy Steps:
+1. Push the latest changes to GitHub
+2. Vercel will auto-deploy with the new configuration
+3. Your portfolio should now load correctly at your domain
+
 ## ✨ Features
 
 ### 🎨 **Futuristic Design**
