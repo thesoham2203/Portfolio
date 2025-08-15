@@ -1,0 +1,5 @@
+Design notes:
+- Futuristic glassmorphism + neon gradients
+- Use network/path motifs in SVGs
+- Keep whitespace generous
+- Make animations low-frequency and GPU-friendly (translate/opacity)

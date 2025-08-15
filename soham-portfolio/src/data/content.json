@@ -1,0 +1,63 @@
+{
+  "name": "Soham Penshanwar",
+  "tagline": "AI systems, secure by design — building privacy-first fintech & tooling.",
+  "email": "sohampilot0@gmail.com",
+  "projects": [
+    {
+      "id": "archivemind",
+      "title": "ArchiveMind",
+      "domain": "AI/ML",
+      "description": "AI-powered legacy data extraction and processing tool designed for ministries and banks to modernize archival systems with intelligent document processing.",
+      "stack": ["Python", "PyTorch", "NLP", "Kubernetes", "FastAPI"],
+      "image": "/src/assets/archivemind.svg",
+      "github": "https://github.com/thesoham2203/ArchiveMind"
+    },
+    {
+      "id": "policyvault",
+      "title": "PolicyVault Nexus",
+      "domain": "Fintech/Security",
+      "description": "RBI-compliant secure data gateway for fintech with zero-persistence architecture, advanced tokenization, and real-time policy enforcement.",
+      "stack": ["Go", "gRPC", "Tokenization", "PostgreSQL", "Redis"],
+      "image": "/src/assets/policyvault.svg",
+      "github": "https://github.com/thesoham2203/PolicyVault-Nexus"
+    },
+    {
+      "id": "redact",
+      "title": "RE-DACT",
+      "domain": "Privacy/Tools",
+      "description": "Chrome extension for automated sensitive data redaction in documents and images using advanced OCR and ML-based pattern recognition.",
+      "stack": ["TypeScript", "Chromium APIs", "OCR", "TensorFlow.js", "WebAssembly"],
+      "image": "/src/assets/redact.svg",
+      "github": "https://github.com/thesoham2203/RE-DACT"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Ex-Treasurer, Computer Society of India (CSI)",
+      "period": "2024–25",
+      "highlights": [
+        "Managed budgets exceeding ₹5L+ for 12+ technical events and workshops",
+        "Led cybersecurity workshops and capture-the-flag competitions",
+        "Coordinated with industry partners for sponsorships and technical sessions"
+      ]
+    },
+    {
+      "role": "Research — E2EE & Privacy Frameworks",
+      "period": "2023–Present",
+      "highlights": [
+        "Published internal research on optimized key exchange protocols",
+        "Developed prototype implementations for secure messaging systems",
+        "Focus on privacy-preserving authentication mechanisms"
+      ]
+    },
+    {
+      "role": "Fintech Security Consultant",
+      "period": "2024–Present",
+      "highlights": [
+        "Designed compliance frameworks for RBI regulations",
+        "Implemented zero-trust architecture for financial data processing",
+        "Security audits and threat modeling for payment gateways"
+      ]
+    }
+  ]
+}
