@@ -1,0 +1,26 @@
+{
+  "name": "Soham Penshanwar - AI Engineer & Privacy Specialist",
+  "short_name": "Soham Penshanwar",
+  "description": "AI Engineer & Privacy Specialist building secure, production-ready systems",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#22d3ee",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["technology", "developer", "portfolio"],
+  "lang": "en-US"
+}

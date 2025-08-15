@@ -23,7 +23,7 @@ const SKILL_GROUPS = {
     color: 'from-violet-500 to-purple-600'
   },
   'Security': {
-    skills: ['FF3-1 Encryption','PPI Extraction', 'Tokenization', 'Audit Trails','Log Handling'],
+    skills: ['FF3-1 Encryption', 'PPI Extraction', 'Tokenization', 'Audit Trails', 'Log Handling'],
     icon: (
       <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <rect x="2" y="4" width="20" height="16" rx="2"/>
@@ -73,20 +73,32 @@ export default function About(){
           </div>
           <div className="space-y-3 text-slate-300 text-sm">
             <div className="flex items-start gap-2">
-              <span className="text-cyan-400 text-lg">🎓</span>
-              <p>AI & Data Science student at K.K. Wagh Institute, specializing in privacy-preserving ML systems and cybersecurity</p>
+              <span className="text-cyan-400 text-lg">🤖</span>
+              <p>AI & Cybersecurity Innovator — Final-year BTech (Hons. Cyber Security) in AI & Data Science at K.K. Wagh Institute. Specializing in privacy-preserving ML, secure backend architectures, and real-time data processing.</p>
             </div>
             <div className="flex items-start gap-2">
-              <span className="text-violet-400 text-lg">🔒</span>
-              <p>Active researcher in E2EE protocols, zero-knowledge proofs, and privacy-preserving authentication mechanisms</p>
+              <span className="text-cyan-400 text-lg">⚡</span>
+              <p>Hackathon-Hardened, Industry-Focused — Delivering scalable, secure, and intelligent systems under extreme time constraints, from national hackathons to real-world deployments.</p>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="text-violet-400 text-lg">🔐</span>
+              <p>Security Researcher — Hands-on experience with E2EE, zero-knowledge proofs, privacy-preserving authentication, and secure tokenization aligned with RBI DPDP Act 2023 compliance.</p>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="text-emerald-400 text-lg">🛠️</span>
+              <p>Full-Stack Project Builder — Creator of ArchiveMind, REDACT, BioMesh, ISL Translation App, and ANPR-based Toll System — leveraging Python, FastAPI, ElectronJS, OpenCV, and machine learning pipelines.</p>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="text-emerald-400 text-lg">👥</span>
+              <p>Leadership & Finance Management — Treasurer of CSI KKWIEER (₹5L+ budget), Head of Finance at Innov-ERA 2025, and Marketing & Outreach Lead for FOSS KKWIEER.</p>
             </div>
             <div className="flex items-start gap-2">
               <span className="text-emerald-400 text-lg">🏦</span>
               <p>Fintech security consultant focusing on RBI DPDP Act 2023 compliance and secure tokenization systems</p>
             </div>
             <div className="flex items-start gap-2">
-              <span className="text-pink-400 text-lg">👥</span>
-              <p>Former CSI Treasurer managing ₹5L+ budgets and leading cybersecurity workshops for 200+ students</p>
+              <span className="text-pink-400 text-lg">🌐</span>
+              <p>Open Source & Tech Outreach — Active GitHub contributor with a focus on AI pipelines, document redaction tools, and fintech data security; conducted cybersecurity workshops for 200+ students.</p>
             </div>
           </div>
         </div>

@@ -94,7 +94,7 @@ export default function App(){
               <div className={`transition-all duration-1000 delay-700 ${
                 animationPhase >= 3 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}>
-                <p className="text-slate-300 text-lg mb-8">Privacy Engineer & AI Developer</p>
+                <p className="text-slate-300 text-lg mb-8">Secure by Design, Intelligent by Nature</p>
                 
                 {/* Loading progress bar */}
                 <div className="w-64 h-1 bg-slate-800 rounded-full mx-auto overflow-hidden">
