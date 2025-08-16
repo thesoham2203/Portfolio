@@ -208,7 +208,7 @@ export default function Hero(){
               </div>
               
               <h3 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-violet-500 to-pink-500 bg-clip-text text-transparent mb-3">
-                REDACT — Privacy Shield
+                REDACT - Privacy Shield
               </h3>
               <p className="text-slate-400 mb-6 leading-relaxed">
                 Enterprise-grade AI-powered document redaction system with GDPR compliance, 
