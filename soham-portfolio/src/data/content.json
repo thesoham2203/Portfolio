@@ -100,9 +100,39 @@
         "Inclusive design for hearing-impaired community"
       ],
       "features": ["Accessibility", "Real-time CV", "Text-to-Speech", "Inclusive Design"]
+    },
+    {
+      "id": "smart-irrigation",
+      "title": "AI-Based Smart Irrigation and Farm Management",
+      "domain": "IoT & Agriculture",
+      "description": "Intelligent farm management system using IoT sensors and machine learning for automated irrigation. Features real-time soil monitoring, weather prediction integration, and automated watering schedules based on crop requirements and environmental conditions.",
+      "stack": ["Python", "FastAPI", "Machine Learning", "IoT", "Raspberry Pi", "MongoDB", "React"],
+      "image": "/src/assets/placeholder-card.svg",
+      "github": "https://github.com/thesoham2203/AI-Based-Smart-Irrigation-and-Farm-Management",
+      "highlights": [
+        "IoT sensor integration for real-time soil moisture monitoring",
+        "ML models for crop water requirement prediction",
+        "Automated irrigation scheduling based on weather forecasts",
+        "Mobile app for remote farm monitoring and control",
+        "Water usage optimization reducing consumption by 30%",
+        "RESTful APIs for device communication and data analytics"
+      ],
+      "features": ["IoT Integration", "Machine Learning", "Agricultural Tech", "Automation"]
     }
   ],
   "experience": [
+    {
+      "role": "Backend Developer",
+      "company": "Prime Academy",
+      "period": "Mar 2025 - Aug 2025",
+      "highlights": [
+        "Developed scalable backend APIs using modern frameworks",
+        "Implemented secure authentication and authorization systems",
+        "Optimized database queries and improved application performance",
+        "Collaborated with frontend teams for seamless integration"
+      ],
+      "skills": ["Backend Development", "API Design", "Database Optimization", "Team Collaboration"]
+    },
     {
       "role": "Treasurer, Computer Society of India (CSI)",
       "company": "K.K. Wagh Institute of Engineering",
@@ -185,6 +215,6 @@
     "email": "sohampilot0@gmail.com",
     "linkedin": "https://www.linkedin.com/in/soham-penshanwar/",
     "github": "https://github.com/thesoham2203",
-    "location": "Mumbai, India"
+    "location": "Nashik, Maharashtra"
   }
 }

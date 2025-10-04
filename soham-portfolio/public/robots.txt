@@ -1,2 +1,64 @@
+# Robots.txt for Soham Penshanwar's Portfolio
+# Privacy Engineer & AI Developer
+
 User-agent: *
 Allow: /
+
+# Allow all search engines to crawl the entire site
+# Portfolio websites benefit from maximum visibility
+
+# Specifically allow important pages
+Allow: /about
+Allow: /projects
+Allow: /experience
+Allow: /contact
+
+# Allow access to static assets
+Allow: /assets/
+Allow: *.css
+Allow: *.js
+Allow: *.png
+Allow: *.jpg
+Allow: *.jpeg
+Allow: *.gif
+Allow: *.svg
+Allow: *.webp
+Allow: *.pdf
+
+# Disallow any potential admin or development files
+Disallow: /admin/
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /.env
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /*.log
+
+# Common crawl rate limits (be respectful)
+Crawl-delay: 1
+
+# Sitemap location (update this URL when you deploy)
+# Sitemap: https://your-domain.com/sitemap.xml
+
+# Additional directives for specific bots
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+# Block aggressive crawlers that might impact performance
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Crawl-delay: 10
