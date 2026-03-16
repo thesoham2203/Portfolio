@@ -345,24 +345,6 @@ video {
   animation: fadeIn 0.3s ease-in;
 }
 
-@keyframes scan {
-  from { top: -10%; }
-  to { top: 110%; }
-}
-
-@keyframes slide-right {
-  from { transform: translateX(-200%); }
-  to { transform: translateX(500%); }
-}
-
-.animate-scan {
-  animation: scan 3s linear infinite;
-}
-
-.animate-slide-right {
-  animation: slide-right 2s ease-in-out infinite;
-}
-
 .animate-glow-pulse {
   animation: glow-pulse 2s ease-in-out infinite;
 }

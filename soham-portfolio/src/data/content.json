@@ -122,14 +122,29 @@
   ],
   "experience": [
     {
+      "role": "Intern",
+      "company": "INSNAPSYS Technologies Pvt. Ltd.",
+      "period": "Jan 2026 - Present",
+      "highlights": [
+        "Built a fully functional REST API project from scratch using Laravel routing, controllers, and middleware",
+        "Developed a hands-on CRUD application leveraging Eloquent ORM to manage real database relationships",
+        "Implemented a working user authentication system using Laravel Breeze to understand security fundamentals"
+      ],
+      "skills": [
+        "Laravel",
+        "Livewire",
+        "PhP",
+        "Self Learning"
+      ]
+    },
+    {
       "role": "Backend Developer",
       "company": "Prime Academy",
       "period": "Mar 2025 - Aug 2025",
       "highlights": [
-        "Developed scalable backend APIs using modern frameworks",
-        "Implemented secure authentication and authorization systems",
-        "Optimized database queries and improved application performance",
-        "Collaborated with frontend teams for seamless integration"
+        "Built a fully functional REST API project from scratch using Laravel routing, controllers, and middleware",
+        "Developed a hands-on CRUD application leveraging Eloquent ORM to manage real database relationships",
+        "Implemented a working user authentication system using Laravel Breeze to understand security fundamentals"
       ],
       "skills": ["Backend Development", "API Design", "Database Optimization", "Team Collaboration"]
     },
