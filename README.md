@@ -52,7 +52,7 @@ If you're experiencing a 404 error on Vercel, the issue has been resolved with:
 
 ```powershell
 # Clone and navigate to project
-cd "D:\Portfolio\soham-portfolio"
+cd "D:\Portfolio\"
 
 # Install dependencies
 npm install
@@ -71,7 +71,6 @@ npm run preview
 ## 📁 Project Structure
 
 ```
-soham-portfolio/
 ├── src/
 │   ├── components/          # React components
 │   │   ├── Navbar.jsx      # Navigation with mobile menu
