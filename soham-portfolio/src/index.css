@@ -345,6 +345,60 @@ video {
   animation: fadeIn 0.3s ease-in;
 }
 
+@keyframes scan {
+  from { top: -10%; }
+  to { top: 110%; }
+}
+
+@keyframes slide-right {
+  from { transform: translateX(-200%); }
+  to { transform: translateX(500%); }
+}
+
+.animate-scan {
+  animation: scan 3s linear infinite;
+}
+
+.animate-slide-right {
+  animation: slide-right 2s ease-in-out infinite;
+}
+
 .animate-glow-pulse {
   animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Custom Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #22d3ee, #7c3aed);
+  border-radius: 10px;
+  border: 2px solid rgba(15, 23, 42, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #67e8f9, #a78bfa);
+}
+
+/* Modal specific scrollbar (Firefox) */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #22d3ee rgba(15, 23, 42, 0.5);
+}
+
+/* Theme appropriate images (Reduce glare in dark mode) */
+.theme-image {
+  transition: filter 0.3s ease;
+}
+
+.dark .theme-image-adjust {
+  filter: brightness(0.85) contrast(1.1);
 }

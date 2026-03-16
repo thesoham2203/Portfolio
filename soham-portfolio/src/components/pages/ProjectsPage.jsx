@@ -11,6 +11,23 @@ export default function ProjectsPage() {
     setIsVisible(true)
   }, [])
 
+
+  const getGithubOG = (githubUrl) => {
+    if (!githubUrl || !githubUrl.includes('github.com')) return null
+    try {
+      const parts = githubUrl.split('github.com/')[1]?.split('/')
+      if (parts && parts.length >= 2) {
+        // Handle owner/repo with potential trailing slashes or subpaths
+        const owner = parts[0]
+        const repo = parts[1]
+        return `https://opengraph.githubassets.com/1/${owner}/${repo}`
+      }
+    } catch (e) {
+      return null
+    }
+    return null
+  }
+
   const domains = ['all', 'Privacy Engineering', 'Computer Vision', 'Fintech Security', 'Accessibility AI', 'IoT & Agriculture']
 
   const filteredProjects = filter === 'all' 
@@ -64,9 +81,15 @@ export default function ProjectsPage() {
                 <div className="relative h-64 bg-gradient-to-br from-cyan-500/20 via-violet-500/20 to-pink-500/20 overflow-hidden">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <img 
-                      src={project.image} 
+                      src={getGithubOG(project.github) || project.image} 
                       alt={project.title}
-                      className="w-32 h-32 object-contain opacity-80 group-hover:scale-110 transition-transform duration-500"
+                      onError={(e) => {
+                        if (e.target.src !== project.image) {
+                          e.target.src = project.image;
+                          e.target.className = "w-32 h-32 object-contain opacity-80 group-hover:scale-110 transition-transform duration-500";
+                        }
+                      }}
+                      className="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-500 scale-105 theme-image-adjust"
                     />
                   </div>
                   <div className="absolute top-4 right-4">
@@ -160,9 +183,35 @@ export default function ProjectsPage() {
           onClick={() => setSelectedProject(null)}
         >
           <div 
-            className="bg-slate-900 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-slate-800"
+            className="bg-slate-900 dark:bg-slate-900 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-slate-800 shadow-2xl custom-scrollbar"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Modal Image Header */}
+            <div className="h-64 relative overflow-hidden bg-gradient-to-br from-cyan-500/20 via-violet-500/20 to-pink-500/20">
+              <img 
+                src={getGithubOG(selectedProject.github) || selectedProject.image} 
+                alt={selectedProject.title}
+                onError={(e) => {
+                  if (e.target.src !== selectedProject.image) {
+                    e.target.src = selectedProject.image;
+                    e.target.className = "w-32 h-32 object-contain opacity-80 mx-auto mt-16";
+                  }
+                }}
+                className="w-full h-full object-cover opacity-90 theme-image-adjust"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+              <div className="absolute top-4 right-4 z-20 md:hidden">
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="w-10 h-10 flex items-center justify-center bg-slate-900/80 backdrop-blur-md rounded-xl hover:bg-slate-800 transition-colors border border-white/10"
+                >
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
             <div className="sticky top-0 bg-slate-900/95 backdrop-blur-lg border-b border-slate-800 p-6 flex items-center justify-between z-10">
               <h2 className="text-3xl font-bold text-white">{selectedProject.title}</h2>
               <button
