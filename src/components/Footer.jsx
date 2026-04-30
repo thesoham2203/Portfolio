@@ -172,7 +172,7 @@ export default function Footer(){
                 </a>
                 
                 <a 
-                  href="https://www.linkedin.com/in/soham-penshanwar/" 
+                  href="https://www.linkedin.com/in/thesoham2203/" 
                   target="_blank" 
                   rel="noreferrer"
                   className="w-10 h-10 rounded-lg bg-slate-800 hover:bg-blue-600 flex items-center justify-center text-slate-400 hover:text-white transition-all hover:scale-110"

@@ -77,7 +77,7 @@ export default function Contact(){
 
             {/* LinkedIn */}
             <a 
-              href="https://www.linkedin.com/in/soham-penshanwar/"
+              href="https://www.linkedin.com/in/thesoham2203/"
               target="_blank"
               rel="noreferrer"
               className="group flex flex-col items-center p-6 rounded-xl hover:bg-slate-800/30 transition-all duration-300 hover:scale-105"
