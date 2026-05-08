@@ -1,75 +1,216 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 
-export default function BackgroundAnimation(){
+export default function BackgroundAnimation() {
+  const canvasRef = useRef(null)
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+
+    let animationFrameId
+    let width = (canvas.width = window.innerWidth)
+    let height = (canvas.height = window.innerHeight)
+
+    // Handle resize
+    const handleResize = () => {
+      width = canvas.width = window.innerWidth
+      height = canvas.height = window.innerHeight
+    }
+    window.addEventListener('resize', handleResize)
+
+    // Track mouse
+    const mouse = { x: null, y: null, targetX: null, targetY: null, active: false }
+
+    const handleMouseMove = (e) => {
+      mouse.targetX = e.clientX
+      mouse.targetY = e.clientY
+      mouse.active = true
+    }
+
+    const handleMouseLeave = () => {
+      mouse.active = false
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+    document.addEventListener('mouseleave', handleMouseLeave)
+
+    // Define Aurora Blobs
+    const blobs = [
+      {
+        x: width * 0.25,
+        y: height * 0.3,
+        targetX: width * 0.25,
+        targetY: height * 0.3,
+        radius: Math.min(width, height) * 0.35,
+        color1: 'rgba(99, 102, 241, 0.12)', // Indigo
+        color2: 'rgba(99, 102, 241, 0.03)',
+        vx: 0.2,
+        vy: 0.15,
+        angle: 0,
+        speed: 0.005,
+      },
+      {
+        x: width * 0.75,
+        y: height * 0.4,
+        targetX: width * 0.75,
+        targetY: height * 0.4,
+        radius: Math.min(width, height) * 0.4,
+        color1: 'rgba(139, 92, 246, 0.1)', // Violet
+        color2: 'rgba(139, 92, 246, 0.02)',
+        vx: -0.15,
+        vy: 0.22,
+        angle: Math.PI / 3,
+        speed: 0.004,
+      },
+      {
+        x: width * 0.5,
+        y: height * 0.75,
+        targetX: width * 0.5,
+        targetY: height * 0.75,
+        radius: Math.min(width, height) * 0.38,
+        color1: 'rgba(236, 72, 153, 0.08)', // Rose
+        color2: 'rgba(236, 72, 153, 0.01)',
+        vx: 0.18,
+        vy: -0.18,
+        angle: (Math.PI * 2) / 3,
+        speed: 0.003,
+      },
+    ]
+
+    // Floating particles (dust)
+    const particles = []
+    const particleCount = 28
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        baseSize: Math.random() * 1.5 + 0.5,
+        size: 0,
+        speedY: -(Math.random() * 0.2 + 0.05),
+        alpha: Math.random() * 0.3 + 0.2,
+        pulseSpeed: Math.random() * 0.02 + 0.005,
+        angle: Math.random() * Math.PI * 2,
+      })
+    }
+
+    // Main Loop
+    const animate = () => {
+      // Clear with absolute black matching base background
+      ctx.fillStyle = '#080a16'
+      ctx.fillRect(0, 0, width, height)
+
+      // Smooth mouse interpolation
+      if (mouse.active) {
+        if (mouse.x === null) {
+          mouse.x = mouse.targetX
+          mouse.y = mouse.targetY
+        } else {
+          mouse.x += (mouse.targetX - mouse.x) * 0.1
+          mouse.y += (mouse.targetY - mouse.y) * 0.1
+        }
+      }
+
+      // 1. Draw and update Aurora Blobs
+      blobs.forEach((blob) => {
+        // Subtle organic float animation
+        blob.angle += blob.speed
+        const driftX = Math.sin(blob.angle) * 45
+        const driftY = Math.cos(blob.angle) * 45
+
+        // Normal base velocity
+        blob.targetX += blob.vx
+        blob.targetY += blob.vy
+
+        // Bounce from walls
+        if (blob.targetX - blob.radius * 0.5 < 0 || blob.targetX + blob.radius * 0.5 > width) blob.vx *= -1
+        if (blob.targetY - blob.radius * 0.5 < 0 || blob.targetY + blob.radius * 0.5 > height) blob.vy *= -1
+
+        let finalX = blob.targetX + driftX
+        let finalY = blob.targetY + driftY
+
+        // Interact with cursor: pull auroras slightly towards mouse
+        if (mouse.active && mouse.x !== null) {
+          const dx = mouse.x - finalX
+          const dy = mouse.y - finalY
+          const dist = Math.sqrt(dx * dx + dy * dy)
+          const maxInfluence = 600
+
+          if (dist < maxInfluence) {
+            const force = (1 - dist / maxInfluence) * 0.15
+            finalX += dx * force
+            finalY += dy * force
+          }
+        }
+
+        // Interpolate blob positions for liquid smoothness
+        blob.x += (finalX - blob.x) * 0.08
+        blob.y += (finalY - blob.y) * 0.08
+
+        // Draw radial gradient
+        const gradient = ctx.createRadialGradient(blob.x, blob.y, 0, blob.x, blob.y, blob.radius)
+        gradient.addColorStop(0, blob.color1)
+        gradient.addColorStop(0.3, blob.color2)
+        gradient.addColorStop(1, 'rgba(8, 10, 22, 0)')
+
+        ctx.fillStyle = gradient
+        ctx.beginPath()
+        ctx.arc(blob.x, blob.y, blob.radius, 0, Math.PI * 2)
+        ctx.fill()
+      })
+
+      // 2. Draw and update Floating Stars
+      particles.forEach((p) => {
+        // Drift upwards
+        p.y += p.speedY
+        if (p.y < -10) p.y = height + 10
+
+        // Star magnetic pull to mouse
+        let displayX = p.x
+        let displayY = p.y
+
+        if (mouse.active && mouse.x !== null) {
+          const dx = mouse.x - p.x
+          const dy = mouse.y - p.y
+          const dist = Math.sqrt(dx * dx + dy * dy)
+          if (dist < 180) {
+            const force = (1 - dist / 180) * 8
+            displayX += (dx / dist) * force
+            displayY += (dy / dist) * force
+          }
+        }
+
+        // Pulsing scale
+        p.angle += p.pulseSpeed
+        p.size = p.baseSize * (1 + Math.sin(p.angle) * 0.3)
+
+        // Draw soft glowing star
+        ctx.fillStyle = `rgba(165, 180, 252, ${p.alpha * (1 + Math.sin(p.angle) * 0.2)})`
+        ctx.beginPath()
+        ctx.arc(displayX, displayY, p.size, 0, Math.PI * 2)
+        ctx.fill()
+      })
+
+      animationFrameId = requestAnimationFrame(animate)
+    }
+
+    animate()
+
+    // Clean up
+    return () => {
+      window.removeEventListener('resize', handleResize)
+      window.removeEventListener('mousemove', handleMouseMove)
+      document.removeEventListener('mouseleave', handleMouseLeave)
+      cancelAnimationFrame(animationFrameId)
+    }
+  }, [])
+
   return (
-    <div aria-hidden className="fixed inset-0 -z-10 overflow-hidden">
-      {/* Main gradient mesh */}
-      <div className="absolute inset-0 bg-animate opacity-30">
-        <svg className="w-full h-full" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.1" />
-              <stop offset="30%" stopColor="#7c3aed" stopOpacity="0.08" />
-              <stop offset="70%" stopColor="#f472b6" stopOpacity="0.06" />
-              <stop offset="100%" stopColor="#22d3ee" stopOpacity="0.04" />
-            </linearGradient>
-            <radialGradient id="spotGradient" cx="50%" cy="50%" r="30%">
-              <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.15" />
-              <stop offset="100%" stopColor="transparent" />
-            </radialGradient>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#mainGradient)" />
-          <circle cx="20%" cy="30%" r="200" fill="url(#spotGradient)" />
-          <circle cx="80%" cy="70%" r="150" fill="url(#spotGradient)" />
-        </svg>
-      </div>
-
-      {/* Neural network pattern */}
-      <div className="absolute inset-0 opacity-20">
-        <svg className="w-full h-full" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <filter id="glow">
-              <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-              <feMerge> 
-                <feMergeNode in="coloredBlur"/>
-                <feMergeNode in="SourceGraphic"/>
-              </feMerge>
-            </filter>
-          </defs>
-          <g stroke="#22d3ee" strokeWidth="0.5" fill="none" filter="url(#glow)">
-            {/* Network nodes */}
-            <circle cx="10%" cy="20%" r="2" fill="#22d3ee" opacity="0.8"/>
-            <circle cx="30%" cy="15%" r="1.5" fill="#7c3aed" opacity="0.6"/>
-            <circle cx="70%" cy="25%" r="2" fill="#22d3ee" opacity="0.7"/>
-            <circle cx="90%" cy="30%" r="1.5" fill="#f472b6" opacity="0.5"/>
-            <circle cx="15%" cy="60%" r="1.5" fill="#7c3aed" opacity="0.6"/>
-            <circle cx="50%" cy="70%" r="2" fill="#22d3ee" opacity="0.8"/>
-            <circle cx="85%" cy="80%" r="1.5" fill="#f472b6" opacity="0.7"/>
-            
-            {/* Animated connections */}
-            <path className="neural-connection" d="M10,20 Q50,40 70,25" strokeDasharray="4,6" opacity="0.4"/>
-            <path className="neural-connection" d="M30,15 Q60,45 90,30" strokeDasharray="3,8" opacity="0.3"/>
-            <path className="neural-connection" d="M15,60 Q40,65 50,70" strokeDasharray="2,5" opacity="0.5"/>
-            <path className="neural-connection" d="M50,70 Q70,75 85,80" strokeDasharray="4,7" opacity="0.4"/>
-          </g>
-        </svg>
-      </div>
-
-      {/* Subtle geometric shapes */}
-      <div className="absolute inset-0 opacity-10">
-        <svg className="w-full h-full" preserveAspectRatio="xMidYMid slice">
-          <g stroke="#22d3ee" strokeWidth="0.5" fill="none">
-            <rect x="60%" y="40%" width="80" height="80" rx="8" transform="rotate(45 60 40)"/>
-            <polygon points="200,100 250,180 150,180" opacity="0.6"/>
-            <circle cx="80%" cy="20%" r="40" strokeDasharray="8,8"/>
-          </g>
-        </svg>
-      </div>
-
-      {/* Data stream effect */}
-      <div className="absolute top-0 right-0 w-1/3 h-full opacity-5">
-        <div className="w-full h-full bg-gradient-to-b from-cyan-400 via-transparent to-violet-500 transform rotate-12 scale-150"></div>
-      </div>
-    </div>
+    <canvas
+      ref={canvasRef}
+      className="fixed inset-0 -z-20 w-full h-full pointer-events-none"
+      style={{ mixBlendMode: 'screen' }}
+    />
   )
 }

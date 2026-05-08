@@ -3,22 +3,29 @@
 @tailwind utilities;
 
 :root {
-  --accent-cyan: #22d3ee;
-  --accent-violet: #7c3aed;
-  --accent-pink: #f472b6;
+  --accent-indigo: #6366f1;
+  --accent-rose: #ec4899;
+  --accent-emerald: #10b981;
+  --twilight-bg: #080a16;
 }
 
 html {
   scroll-behavior: smooth;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
 }
 
 body {
   overflow-x: hidden;
+  background-color: var(--twilight-bg);
+  color: #e1e1f3;
 }
 
-/* Performance optimizations */
+/* Performance optimizations & transitions */
 * {
   box-sizing: border-box;
+  transition-property: color, background-color, border-color, transform, box-shadow, opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 350ms;
 }
 
 img,
@@ -29,7 +36,6 @@ video {
 
 /* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {
@@ -39,13 +45,17 @@ video {
   }
 }
 
-/* Enhanced futuristic glass card with border glow */
+/* 
+ * The Ambient Luminary Glass Cards 
+ * Designed to feel warm, premium, and soft with gradient glows
+ */
 .card-glass {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-  backdrop-filter: blur(12px) saturate(120%);
-  -webkit-backdrop-filter: blur(12px) saturate(120%);
-  border: 1px solid rgba(34, 211, 238, 0.1);
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(24px) saturate(130%);
+  -webkit-backdrop-filter: blur(24px) saturate(130%);
+  border: 1px solid rgba(99, 102, 241, 0.12);
   position: relative;
+  border-radius: 24px;
   will-change: transform;
 }
 
@@ -54,7 +64,7 @@ video {
   position: absolute;
   inset: 0;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(34, 211, 238, 0.2), transparent, rgba(124, 58, 237, 0.2));
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), transparent, rgba(236, 72, 153, 0.25));
   border-radius: inherit;
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: xor;
@@ -62,325 +72,156 @@ video {
   pointer-events: none;
 }
 
-/* Floating mesh background animation */
-@keyframes float-mesh {
+/* Soft panel glass without hover scales */
+.panel-glass {
+  background: rgba(11, 13, 26, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+}
 
-  0%,
-  100% {
-    transform: translate(0, 0) rotate(0deg);
+/* Ambient Drifting background animation */
+@keyframes float-aurora {
+  0%, 100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
   }
-
-  25% {
-    transform: translate(2%, -1%) rotate(1deg);
+  33% {
+    transform: translate(4%, -3%) scale(1.1) rotate(3deg);
   }
-
-  50% {
-    transform: translate(-1%, 2%) rotate(-1deg);
-  }
-
-  75% {
-    transform: translate(-2%, -1%) rotate(0.5deg);
+  66% {
+    transform: translate(-3%, 4%) scale(0.9) rotate(-3deg);
   }
 }
 
 .bg-animate {
   transform: translateZ(0);
   will-change: transform;
-  animation: float-mesh 20s ease-in-out infinite;
+  animation: float-aurora 25s ease-in-out infinite;
 }
 
-/* Enhanced terminal hover with glow */
-.terminal-hover {
-  position: relative;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform, box-shadow;
+/* Glow effects */
+.glow-warm-indigo {
+  box-shadow: 0 10px 40px -10px rgba(99, 102, 241, 0.35);
 }
 
-.terminal-hover:hover {
-  box-shadow:
-    0 0 20px rgba(34, 211, 238, 0.15),
-    0 4px 20px rgba(0, 0, 0, 0.3);
-  transform: translateY(-2px);
+.glow-warm-rose {
+  box-shadow: 0 10px 40px -10px rgba(236, 72, 153, 0.35);
 }
 
-/* Improved code-typing animation */
+/* Code typing animation, adjusted to look human and polite */
 @keyframes typing {
-  0% {
-    width: 0;
-  }
-
-  50% {
-    width: 100%;
-  }
-
-  100% {
-    width: 0;
-  }
+  0% { width: 0; }
+  50% { width: 100%; }
+  100% { width: 0; }
 }
 
 @keyframes blink {
-
-  0%,
-  50% {
-    border-color: rgba(34, 211, 238, 0.8);
-  }
-
-  51%,
-  100% {
-    border-color: transparent;
-  }
+  0%, 50% { border-color: rgba(99, 102, 241, 0.8); }
+  51%, 100% { border-color: transparent; }
 }
 
 .code-typing {
   white-space: nowrap;
   overflow: hidden;
   display: inline-block;
-  border-right: 2px solid rgba(34, 211, 238, 0.8);
+  border-right: 2px solid rgba(99, 102, 241, 0.8);
   animation:
-    typing 4s steps(30, end) infinite,
+    typing 5s steps(30, end) infinite,
     blink 1s step-end infinite;
   font-family: 'JetBrains Mono', monospace;
 }
 
-/* Pulse animation for status indicators */
-@keyframes pulse-glow {
-
-  0%,
-  100% {
-    opacity: 1;
-    box-shadow: 0 0 10px currentColor;
+/* Soft Pulse animation for peaceful status indicators */
+@keyframes pulse-soft-glow {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+    opacity: 0.9;
   }
-
   50% {
-    opacity: 0.7;
-    box-shadow: 0 0 20px currentColor;
+    transform: scale(1.15);
+    box-shadow: 0 0 24px rgba(16, 185, 129, 0.7);
+    opacity: 1;
   }
 }
 
 .animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
+  animation: pulse-soft-glow 3s ease-in-out infinite;
 }
 
-/* Gradient text animation */
-@keyframes gradient-shift {
+/* Peaceful Aurora Bloom for Loader */
+@keyframes aurora-bloom {
+  0%, 100% {
+    transform: scale(1);
+    filter: blur(60px);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    filter: blur(80px);
+    opacity: 0.85;
+  }
+}
 
-  0%,
-  100% {
+.animate-aurora-bloom {
+  animation: aurora-bloom 5s ease-in-out infinite;
+}
+
+/* Gradient text animation - beautiful rose to indigo twilight shift */
+@keyframes gradient-shift {
+  0%, 100% {
     background-position: 0% 50%;
   }
-
   50% {
     background-position: 100% 50%;
   }
 }
 
 .text-gradient-animated {
-  background: linear-gradient(45deg, #22d3ee, #7c3aed, #f472b6, #22d3ee);
+  background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899, #6366f1);
   background-size: 300% 300%;
-  animation: gradient-shift 6s ease infinite;
+  animation: gradient-shift 8s ease infinite;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Neural network connection animation */
-@keyframes neural-pulse {
-
-  0%,
-  100% {
-    stroke-dasharray: 4, 4;
-    stroke-dashoffset: 0;
-  }
-
-  50% {
-    stroke-dasharray: 4, 4;
-    stroke-dashoffset: 8;
-  }
-}
-
-.neural-connection {
-  animation: neural-pulse 3s ease-in-out infinite;
-}
-
-/* Responsive improvements */
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .card-glass {
-    border-radius: 16px;
-    backdrop-filter: blur(8px);
-  }
-
-  .code-typing {
-    font-size: 0.75rem;
+    border-radius: 20px;
+    backdrop-filter: blur(16px);
   }
 }
 
-@media (max-width: 640px) {
-  .card-glass {
-    border-radius: 12px;
-  }
-}
-
-/* Smooth transitions for all interactive elements */
-* {
-  transition-property: color, background-color, border-color, transform, box-shadow, opacity;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
-}
-
-/* Loading Screen Animations */
-@keyframes spin-slow {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 0.4;
-  }
-
-  50% {
-    transform: translateY(-10px) rotate(2deg);
-    opacity: 0.7;
-  }
-}
-
-@keyframes float-delayed {
-
-  0%,
-  100% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 0.3;
-  }
-
-  50% {
-    transform: translateY(-15px) rotate(-2deg);
-    opacity: 0.6;
-  }
-}
-
-@keyframes float-slow {
-
-  0%,
-  100% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 0.5;
-  }
-
-  50% {
-    transform: translateY(-8px) rotate(1deg);
-    opacity: 0.8;
-  }
-}
-
-@keyframes glow-pulse {
-
-  0%,
-  100% {
-    box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
-  }
-
-  50% {
-    box-shadow: 0 0 40px rgba(34, 211, 238, 0.6), 0 0 60px rgba(124, 58, 237, 0.3);
-  }
-}
-
-.animate-spin-slow {
-  animation: spin-slow 3s linear infinite;
-}
-
-.animate-float {
-  animation: float 4s ease-in-out infinite;
-}
-
-.animate-float-delayed {
-  animation: float-delayed 5s ease-in-out infinite 1s;
-}
-
-.animate-float-slow {
-  animation: float-slow 6s ease-in-out infinite 2s;
-}
-
-/* Additional animations for new design */
-@keyframes gradient {
-
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-.text-gradient-animated {
-  background-size: 200% 200%;
-  animation: gradient 3s ease infinite;
-}
-
-.animate-gradient {
-  background-size: 200% 200%;
-  animation: gradient 3s ease infinite;
-}
-
-.animate-fadeIn {
-  animation: fadeIn 0.3s ease-in;
-}
-
-.animate-glow-pulse {
-  animation: glow-pulse 2s ease-in-out infinite;
-}
-
-/* Custom Premium Scrollbar */
+/* Custom Premium Scrollbar with Ambient Indigo to Rose gradient */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.5);
-  backdrop-filter: blur(4px);
+  background: rgba(8, 10, 22, 0.8);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #22d3ee, #7c3aed);
+  background: linear-gradient(to bottom, #6366f1, #ec4899);
   border-radius: 10px;
-  border: 2px solid rgba(15, 23, 42, 0.5);
+  border: 2px solid rgba(8, 10, 22, 0.8);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #67e8f9, #a78bfa);
+  background: linear-gradient(to bottom, #818cf8, #f472b6);
 }
 
-/* Modal specific scrollbar (Firefox) */
+/* Modal scrollbar */
 .custom-scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: #22d3ee rgba(15, 23, 42, 0.5);
+  scrollbar-color: #6366f1 rgba(8, 10, 22, 0.8);
 }
 
-/* Theme appropriate images (Reduce glare in dark mode) */
-.theme-image {
-  transition: filter 0.3s ease;
-}
-
-.dark .theme-image-adjust {
-  filter: brightness(0.85) contrast(1.1);
+/* Dark mode image adjustment for viewing comfort */
+.theme-image-adjust {
+  filter: brightness(0.9) contrast(1.05);
 }

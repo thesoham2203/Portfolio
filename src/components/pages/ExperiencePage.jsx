@@ -10,17 +10,17 @@ export default function ExperiencePage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-slate-950 pt-24 pb-20">
+    <div className="min-h-screen bg-[#080a16] pt-28 pb-20 font-sans">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Header */}
-        <div className={`mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h1 className="text-6xl md:text-8xl font-black mb-6">
-            <span className="text-gradient-animated bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent">
+        <div className={`mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <h1 className="text-5xl md:text-7xl font-display font-extrabold mb-6">
+            <span className="text-gradient-animated bg-gradient-to-r from-indigo-300 via-purple-300 to-rose-300 bg-clip-text text-transparent">
               Experience
             </span>
           </h1>
-          <p className="text-xl text-slate-300 max-w-3xl">
+          <p className="text-lg text-indigo-100/70 max-w-3xl leading-relaxed font-medium">
             Leadership roles, technical contributions, and professional experience.
           </p>
         </div>
@@ -28,35 +28,35 @@ export default function ExperiencePage() {
         {/* Experience timeline */}
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-400 via-violet-500 to-pink-500 hidden md:block"></div>
+          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-[1.5px] bg-gradient-to-b from-indigo-500/20 via-purple-500/20 to-rose-500/20 hidden md:block"></div>
 
           <div className="space-y-16">
             {data.experience.map((exp, index) => (
               <div
                 key={index}
-                className={`relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                className={`relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
                 style={{ transitionDelay: `${index * 200 + 300}ms` }}
               >
                 <div className={`flex flex-col md:flex-row gap-8 items-center ${index % 2 === 0 ? '' : 'md:flex-row-reverse'}`}>
                   
                   {/* Content card */}
-                  <div className="flex-1">
-                    <div className="bg-slate-900/50 backdrop-blur-xl rounded-3xl p-8 border border-slate-800 hover:border-violet-400/50 transition-all hover:scale-[1.02]">
+                  <div className="flex-1 w-full">
+                    <div className="card-glass p-8">
                       
-                      <div className="flex items-start justify-between mb-4">
+                      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6">
                         <div>
-                          <h3 className="text-2xl font-bold text-white mb-2">{exp.role}</h3>
-                          <p className="text-violet-400 font-medium text-lg">{exp.company}</p>
+                          <h3 className="text-xl font-bold text-slate-100 mb-1">{exp.role}</h3>
+                          <p className="text-indigo-400 font-semibold text-base">{exp.company}</p>
                         </div>
-                        <span className="px-4 py-2 bg-violet-400/10 rounded-lg text-violet-400 text-sm font-medium whitespace-nowrap">
+                        <span className="px-3.5 py-1.5 bg-indigo-500/10 rounded-lg text-indigo-300 text-xs font-bold border border-indigo-500/15 shrink-0 self-start sm:self-auto">
                           {exp.period}
                         </span>
                       </div>
 
                       <ul className="space-y-3 mb-6">
                         {exp.highlights.map((highlight, i) => (
-                          <li key={i} className="text-slate-300 flex items-start gap-3">
-                            <svg className="w-5 h-5 text-violet-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <li key={i} className="text-xs font-medium text-indigo-200/75 flex items-start gap-3 leading-relaxed">
+                            <svg className="w-4 h-4 text-indigo-400 flex-shrink-0 mt-0.5 animate-pulse-glow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                             </svg>
                             <span>{highlight}</span>
@@ -68,7 +68,7 @@ export default function ExperiencePage() {
                         {exp.skills.map((skill) => (
                           <span 
                             key={skill}
-                            className="px-3 py-1 bg-slate-800 rounded-lg text-xs font-medium text-slate-300 border border-slate-700"
+                            className="px-2.5 py-1.5 bg-indigo-950/20 rounded-lg text-xs font-semibold text-indigo-200 border border-indigo-950/60"
                           >
                             {skill}
                           </span>
@@ -78,9 +78,9 @@ export default function ExperiencePage() {
                   </div>
 
                   {/* Timeline dot */}
-                  <div className="hidden md:flex items-center justify-center">
-                    <div className="w-6 h-6 rounded-full bg-gradient-to-r from-violet-400 to-pink-400 border-4 border-slate-950 relative">
-                      <div className="absolute inset-0 rounded-full bg-violet-400 animate-ping opacity-75"></div>
+                  <div className="hidden md:flex items-center justify-center shrink-0">
+                    <div className="w-5 h-5 rounded-full bg-gradient-to-r from-indigo-400 via-purple-400 to-rose-400 border-4 border-[#080a16] relative z-10">
+                      <div className="absolute inset-0 rounded-full bg-indigo-400 animate-ping opacity-30"></div>
                     </div>
                   </div>
 
@@ -93,46 +93,46 @@ export default function ExperiencePage() {
         </div>
 
         {/* Skills summary */}
-        <div className={`mt-20 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-4xl font-bold text-white mb-8 text-center">Technical Skills Overview</h2>
+        <div className={`mt-24 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <h2 className="text-2xl font-bold text-slate-100 mb-10 text-center font-display">Technical Skills Overview</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-slate-900/50 backdrop-blur-xl rounded-2xl p-6 border border-slate-800 hover:border-cyan-400/50 transition-all">
-              <div className="text-4xl mb-4">💻</div>
-              <h3 className="text-lg font-bold text-white mb-2">Languages</h3>
+            <div className="bg-indigo-950/10 backdrop-blur-md rounded-3xl p-6 border border-indigo-950/40 hover:border-indigo-500/15 transition-all">
+              <div className="text-3xl mb-4">💻</div>
+              <h3 className="text-base font-bold text-slate-100 mb-4 uppercase tracking-wider text-xs font-bold text-indigo-300">Languages</h3>
               <div className="flex flex-wrap gap-2">
                 {data.skills.languages.map((lang) => (
-                  <span key={lang} className="text-sm text-slate-400">{lang}</span>
+                  <span key={lang} className="px-2.5 py-1 bg-indigo-950/20 border border-indigo-950/60 text-indigo-200/80 rounded-lg text-xs font-semibold">{lang}</span>
                 ))}
               </div>
             </div>
 
-            <div className="bg-slate-900/50 backdrop-blur-xl rounded-2xl p-6 border border-slate-800 hover:border-violet-400/50 transition-all">
-              <div className="text-4xl mb-4">🛠️</div>
-              <h3 className="text-lg font-bold text-white mb-2">Frameworks</h3>
+            <div className="bg-indigo-950/10 backdrop-blur-md rounded-3xl p-6 border border-indigo-950/40 hover:border-indigo-500/15 transition-all">
+              <div className="text-3xl mb-4">🛠️</div>
+              <h3 className="text-base font-bold text-slate-100 mb-4 uppercase tracking-wider text-xs font-bold text-indigo-300">Frameworks</h3>
               <div className="flex flex-wrap gap-2">
                 {data.skills.frameworks.slice(0, 5).map((fw) => (
-                  <span key={fw} className="text-sm text-slate-400">{fw}</span>
+                  <span key={fw} className="px-2.5 py-1 bg-indigo-950/20 border border-indigo-950/60 text-indigo-200/80 rounded-lg text-xs font-semibold">{fw}</span>
                 ))}
               </div>
             </div>
 
-            <div className="bg-slate-900/50 backdrop-blur-xl rounded-2xl p-6 border border-slate-800 hover:border-pink-400/50 transition-all">
-              <div className="text-4xl mb-4">🔐</div>
-              <h3 className="text-lg font-bold text-white mb-2">Security</h3>
+            <div className="bg-indigo-950/10 backdrop-blur-md rounded-3xl p-6 border border-indigo-950/40 hover:border-indigo-500/15 transition-all">
+              <div className="text-3xl mb-4">🔐</div>
+              <h3 className="text-base font-bold text-slate-100 mb-4 uppercase tracking-wider text-xs font-bold text-indigo-300">Security</h3>
               <div className="flex flex-wrap gap-2">
                 {data.skills.security.slice(0, 5).map((sec) => (
-                  <span key={sec} className="text-sm text-slate-400">{sec}</span>
+                  <span key={sec} className="px-2.5 py-1 bg-indigo-950/20 border border-indigo-950/60 text-indigo-200/80 rounded-lg text-xs font-semibold">{sec}</span>
                 ))}
               </div>
             </div>
 
-            <div className="bg-slate-900/50 backdrop-blur-xl rounded-2xl p-6 border border-slate-800 hover:border-emerald-400/50 transition-all">
-              <div className="text-4xl mb-4">☁️</div>
-              <h3 className="text-lg font-bold text-white mb-2">Cloud & Tools</h3>
+            <div className="bg-indigo-950/10 backdrop-blur-md rounded-3xl p-6 border border-indigo-950/40 hover:border-indigo-500/15 transition-all">
+              <div className="text-3xl mb-4">☁️</div>
+              <h3 className="text-base font-bold text-slate-100 mb-4 uppercase tracking-wider text-xs font-bold text-indigo-300">Cloud & Tools</h3>
               <div className="flex flex-wrap gap-2">
                 {data.skills.cloud.slice(0, 5).map((cloud) => (
-                  <span key={cloud} className="text-sm text-slate-400">{cloud}</span>
+                  <span key={cloud} className="px-2.5 py-1 bg-indigo-950/20 border border-indigo-950/60 text-indigo-200/80 rounded-lg text-xs font-semibold">{cloud}</span>
                 ))}
               </div>
             </div>
