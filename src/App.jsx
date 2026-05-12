@@ -7,6 +7,7 @@ import ProjectsPage from './components/pages/ProjectsPage'
 import ExperiencePage from './components/pages/ExperiencePage'
 import ContactPage from './components/pages/ContactPage'
 import Footer from './components/Footer'
+import BackgroundAnimation from './components/BackgroundAnimation'
 
 function ScrollToTop() {
   const location = useLocation()
@@ -38,29 +39,35 @@ function AppContent() {
 
   if (isLoading) {
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#080a16]">
+        {/* Deep, calm organic aurora blobs */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-to-tr from-indigo-500/20 via-purple-500/15 to-rose-500/20 rounded-full blur-[80px] animate-aurora-bloom"></div>
+          <div className="absolute top-1/4 left-1/3 w-[250px] h-[250px] bg-indigo-500/10 rounded-full blur-[60px]" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute bottom-1/4 right-1/3 w-[250px] h-[250px] bg-rose-500/10 rounded-full blur-[60px]" style={{ animationDelay: '2.5s' }}></div>
         </div>
 
-        <div className="relative z-10 text-center">
-          <div className={`mb-8 transition-all duration-1000 ${animationPhase >= 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}>
-            <div className="relative w-24 h-24 mx-auto">
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan-400 via-violet-500 to-pink-500 animate-spin-slow"></div>
-              <div className="absolute inset-2 rounded-xl bg-slate-900 flex items-center justify-center">
-                <span className="text-2xl font-extrabold text-transparent bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text">SP</span>
+        <div className="relative z-10 text-center px-6">
+          {/* Soft logo sphere */}
+          <div className={`mb-10 transition-all duration-1000 ${animationPhase >= 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
+            <div className="relative w-20 h-20 mx-auto">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-indigo-500 via-purple-500 to-rose-500 opacity-20 blur-md"></div>
+              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-indigo-500 via-purple-500 to-rose-500 p-[1.5px]">
+                <div className="w-full h-full rounded-full bg-[#080a16] flex items-center justify-center">
+                  <span className="text-xl font-extrabold tracking-wider bg-gradient-to-r from-indigo-300 via-purple-300 to-rose-300 bg-clip-text text-transparent">SP</span>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className={`transition-all duration-1000 ${animationPhase >= 2 ? 'opacity-100' : 'opacity-0'}`}>
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-cyan-400 via-violet-500 to-pink-500 bg-clip-text text-transparent">
+          {/* Fading text content */}
+          <div className={`transition-all duration-1000 ${animationPhase >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <h1 className="text-3xl md:text-4xl font-extrabold mb-3 tracking-tight bg-gradient-to-r from-indigo-300 via-purple-300 to-rose-300 bg-clip-text text-transparent">
               Soham Penshanwar
             </h1>
-            <p className="text-slate-300 text-lg mb-8">Secure by Design, Intelligent by Nature</p>
-            <div className="w-64 h-1 bg-slate-800 rounded-full mx-auto overflow-hidden">
-              <div className={`h-full bg-gradient-to-r from-cyan-400 to-violet-500 transition-all duration-2000 ${animationPhase >= 1 ? 'w-full' : 'w-0'}`}></div>
+            <p className="text-indigo-200/60 text-base md:text-lg mb-8 font-medium tracking-wide">Thoughtful AI & Privacy Engineering</p>
+            <div className="w-48 h-[2px] bg-indigo-950 rounded-full mx-auto overflow-hidden">
+              <div className={`h-full bg-gradient-to-r from-indigo-400 to-rose-400 transition-all duration-3000 ease-out ${animationPhase >= 1 ? 'w-full' : 'w-0'}`}></div>
             </div>
           </div>
         </div>
@@ -69,7 +76,8 @@ function AppContent() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950">
+    <div className="min-h-screen bg-[#080a16] text-[#e1e1f3] selection:bg-indigo-500/20 selection:text-indigo-200 relative">
+      <BackgroundAnimation />
       <ScrollToTop />
       <Navigation />
       <Routes>
